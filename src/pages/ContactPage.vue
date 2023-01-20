@@ -1,9 +1,8 @@
 <template>
-  <q-page padding>
-    Index page
+  <q-page>
+    Contact page
   </q-page>
 </template>
 
 <script setup>
-
 </script>

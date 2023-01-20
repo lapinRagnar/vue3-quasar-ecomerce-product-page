@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -12,10 +12,9 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          sneakers
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -24,19 +23,66 @@
       show-if-above
       bordered
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+
+      <div class="q-pa-md" style="max-width: 350px">
+
+        <q-list >
+          <q-item
+            clickable
+            v-ripple
+            exact
+            to="/"
+          >
+            <q-item-section>Collections</q-item-section>
+          </q-item>
+
+          <q-item
+            clickable
+            v-ripple
+            to="/men"
+          >
+            <q-item-section>
+              <q-item-label>Men</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item
+            clickable
+            v-ripple
+            exact
+            to="/women"
+          >
+            <q-item-section>
+              <q-item-label>Women</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item
+            clickable
+            v-ripple
+            exact
+            to="/about"
+          >
+            <q-item-section>
+              <q-item-label>About</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item
+            clickable
+            v-ripple
+            exact
+            to="/contact"
+          >
+            <q-item-section>
+              <q-item-label>Contact</q-item-label>
+            </q-item-section>
+          </q-item>
+
+        </q-list>
+      </div>
+
     </q-drawer>
 
     <q-page-container>
@@ -47,65 +93,19 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+
   },
 
   setup () {
     const leftDrawerOpen = ref(false)
 
     return {
-      essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
@@ -114,3 +114,12 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss">
+  .q-item.q-router-link--active {
+    font-size: 20px;
+    font-weight: bolder;
+    color: $green-6 !important;
+    background-color: $orange-1 !important;
+  }
+</style>
