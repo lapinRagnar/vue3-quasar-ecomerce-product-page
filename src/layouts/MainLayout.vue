@@ -22,12 +22,24 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
+      :width="200"
     >
 
 
       <div class="q-pa-md" style="max-width: 350px">
 
         <q-list >
+
+          <q-btn
+            dense
+            round
+            unelevated
+            icon="fa-solid fa-xmark"
+            @click="toggleLeftDrawer"
+            size="sm"
+            class="q-mb-xl"
+          />
+
           <q-item
             clickable
             v-ripple
