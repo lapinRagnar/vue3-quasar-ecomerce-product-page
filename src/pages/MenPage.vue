@@ -1,6 +1,8 @@
 <template>
   <q-page padding>
-    Men page
+    <div class="flex flex-center">
+      Men page
+    </div>
   </q-page>
 </template>
 

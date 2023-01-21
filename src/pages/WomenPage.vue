@@ -1,6 +1,8 @@
 <template>
-  <q-page padding>
-    Women page
+  <q-page padding class="flex flex-center">
+    <div class="flex flex-center">
+      Women page
+    </div>
   </q-page>
 </template>
 

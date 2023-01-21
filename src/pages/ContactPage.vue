@@ -1,6 +1,8 @@
 <template>
   <q-page padding>
-    Contact page
+    <div class="flex flex-center">
+      Contact page
+    </div>
   </q-page>
 </template>
 
