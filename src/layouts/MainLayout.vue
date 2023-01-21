@@ -61,9 +61,25 @@
         <q-space/>
 
         <q-btn dense round flat icon="shopping_cart" color="black">
+
           <q-badge color="red" floating transparent>
             4
           </q-badge>
+
+          <q-menu
+            fit
+            :offset="[80, 20]"
+          >
+            <q-list style="width: 320px; height: 200px;">
+              <q-item clickable v-close-popup>
+                <q-item-section class="text-weight-bold">Cart</q-item-section>
+              </q-item>
+              <q-separator />
+              <q-item clickable v-close-popup>
+                <q-item-section style="height: 100px;" class="flex flex-center">Your Cart is empty.</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
         </q-btn>
 
         <q-btn class="q-ml-md" flat>
