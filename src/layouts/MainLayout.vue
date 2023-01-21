@@ -60,11 +60,12 @@
 
         <q-space/>
 
-        <q-btn dense round flat icon="shopping_cart" color="black">
+        <q-btn v-if="inputCartStore.inputValue == 0" dense round flat icon="shopping_cart" color="black">
 
           <q-badge color="red" floating transparent>
-            4
+            {{ inputCartStore.inputValue }}
           </q-badge>
+
 
           <q-menu
             fit
@@ -78,6 +79,64 @@
               <q-item clickable v-close-popup>
                 <q-item-section style="height: 100px;" class="flex flex-center">Your Cart is empty.</q-item-section>
               </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
+
+        <q-btn v-else dense round flat icon="shopping_cart" color="black">
+
+          <q-badge color="red" floating transparent>
+            {{ inputCartStore.inputValue }}
+          </q-badge>
+
+
+          <q-menu
+            fit
+            :offset="[80, 20]"
+          >
+            <q-list style="width: 320px; height: 200px;">
+
+              <q-item clickable v-close-popup>
+                <q-item-section class="text-weight-bold">Cart</q-item-section>
+              </q-item>
+
+              <q-separator />
+
+              <q-item clickable v-ripple v-close-popup>
+
+                <q-item-section avatar>
+                  <q-avatar rounded  text-color="black" icon="bluetooth" />
+                </q-item-section>
+
+                <q-item-section>
+                  <div>Fall Limited Edition Sneakers</div>
+                  <div> ({{ inputCartStore.inputValue }}) x $125 </div>
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-avatar
+                    rounded
+                    text-color="black"
+                    icon="delete"
+                    @click="deleteCart"
+                  />
+                </q-item-section>
+
+              </q-item>
+
+              <q-separator spaced />
+
+              <q-item>
+                <q-item-section>
+                  <q-btn
+                    color="orange"
+                    label="Chekout"
+
+                  />
+                </q-item-section>
+              </q-item>
+
+
             </q-list>
           </q-menu>
         </q-btn>
@@ -177,7 +236,9 @@
 </template>
 
 <script>
+
 import { defineComponent, ref } from 'vue'
+import { useInputCartStore } from 'src/stores/inputCart'
 
 
 export default defineComponent({
@@ -189,13 +250,22 @@ export default defineComponent({
 
   setup () {
     const leftDrawerOpen = ref(false)
+    const inputCartStore = useInputCartStore()
+
+    function deleteCart(){
+      console.log('la cart', inputCartStore.inputValue)
+      inputCartStore.inputValue = 0
+      console.log('la cart', inputCartStore.inputValue)
+    }
 
     return {
       tab: ref('tab1'),
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      },
+      inputCartStore,
+      deleteCart
     }
   }
 })
