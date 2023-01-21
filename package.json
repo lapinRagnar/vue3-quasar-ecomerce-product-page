@@ -2,7 +2,7 @@
   "name": "2-ecommerce-product-page",
   "version": "0.0.1",
   "description": "A Quasar Project",
-  "productName": "sneakers | product",
+  "productName": "sneakers | product cart",
   "author": "lapinRagnar <lapinragnar@gmail.com>",
   "private": true,
   "scripts": {
